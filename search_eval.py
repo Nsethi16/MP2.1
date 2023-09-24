@@ -31,7 +31,7 @@ class InL2Ranker(metapy.index.RankingFunction):
         N = sd.num_docs
         # print("tfn term")
         # print((tfn/(tfn + self.c) ))
-        score = c_t_q * (tfn/(tfn + self.c) )* math.log2((N+1))
+        score = c_t_q * (tfn/(tfn + self.c) )* math.log2((N+1)/(c_t_c+0.5))
 
         return score
 
