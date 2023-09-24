@@ -10,7 +10,7 @@ class InL2Ranker(metapy.index.RankingFunction):
     Create a new ranking function in Python that can be used in MeTA.
     """
     def __init__(self, some_param=1.0):
-        self.c = some_param
+        self.param = some_param
         # You *must* call the base class constructor here!
         super(InL2Ranker, self).__init__()
 
@@ -31,9 +31,9 @@ class InL2Ranker(metapy.index.RankingFunction):
         N = sd.num_docs
         # print("tfn term")
         # print((tfn/(tfn + self.c) ))
-        score = c_t_q * (tfn/(tfn + self.c) )* math.log2((N+1)/(c_t_c+0.5))
+        # score = c_t_q * (tfn/(tfn + self.param) ) * math.log2((N+1)/(c_t_c+0.5))
 
-        return score
+        return c_t_q * (tfn/(tfn + self.param) ) * math.log2((N+1)/(c_t_c+0.5))
 
 
 def load_ranker(cfg_file):
